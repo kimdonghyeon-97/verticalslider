@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+* {
+    box-sizing: border-box;
+    margin: 0; 
+    /* 전체 screen에 대한 margin */
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    height: 100vh;
+}
+
+.slider-container { 
+    position: relative;
+    /* relative를 부모라고 하고 absolute를 자식이라고 가정했을 때
+    relative가 absolute를 돌아다닐 수 있는 영역을 제한 */
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left-slide {
+    height: 100%;
+    width: 35%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform .5s ease-in-out;
+    /* arrow button click시에 부드러운 화면 전환 */
+}
+
+.left-slide > div { 
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.left-slide h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: -30px;
+}
+
+.right-slide {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 35%;
+    width: 65%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.right-slide > div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background image를 빈틈없이 배치 */
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+button {
+    background-color: #fff;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    /* button에 마우스를 갖다 대었을 때 손가락 모양으로 바뀜 */
+    font-size: 16px;
+    padding: 15px;
+}
+
+button:hover {
+    color: #222;
+    /* arrow button에 커서를 놓았을 때의 색 */
+}
+
+
+button:focus {
+    outline: none;
+}
+
+.slider-container .action-buttons button {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    z-index: 100;
+}
+
+.slider-container .action-buttons .down-button {
+    transform: translateX(-100%);
+    /* 원래의 button 위치에서 좌로 button의 size만큼 이동 */
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    /* button box border을 둥글게 만들기 */
+}
+
+.slider-container .action-buttons .up-button {
+    transform: translateY(-100%);
+    /* 원래의 button 위치에서 위로 button의 size만큼 이동 */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    /* button box border을 둥글게 만들기 */
+}
